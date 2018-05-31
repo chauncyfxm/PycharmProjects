@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+    <title>编辑博客</title>
+</head>
+<body>
+<h1>编辑博客<br></h1>
+<form method="post" action = "{% url 'blog:editpagehandle' %}">
+    {% csrf_token %}
+    标题
+    <input type="text" name = "title"><br><br>
+    内容<br>
+    <textarea name = "content" style="width:720px; height:300px"></textarea>
+    <br>
+    <input type = "submit" value = "提交">
+</form>
+</body>
+</html>

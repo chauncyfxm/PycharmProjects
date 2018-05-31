@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+
+</head>
+
+<body>
+<h1>首页</h1>
+<a href="{% url 'liuyan_01:edit' %}">留言</a>
+<a href="{% url 'liuyan_01:login' %}">登录</a>
+<a href="{% url 'liuyan_01:record' %}">注册</a>
+<ul>
+    {% for foo in list %}
+        <li><h2>{{ foo.lname }}的留言是:</h2>{{ foo.ltext }}</li><br>
+    {% endfor %}
+
+</ul>
+
+
+
+</body>
+</html>

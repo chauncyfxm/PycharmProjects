@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>record</title>
+</head>
+<body>
+<form action="{% url 'blog:record_handle' %}" method="post">
+    {% csrf_token %}
+    <h1>
+        <span>注册</span>
+    </h1>
+    <span>用户名 :</span>
+    <input id="name" type="text" name="name" class="error" placeholder="请输入您的用户名"/>
+    <div class="error-msg"></div>
+
+    <span>密码 :</span>
+    <input id="email" type="password" value="" name="pw" placeholder="请输入密码"/>
+    <div class="error-msg"></div>
+
+    <span>个性签名 :</span>
+    <input id="email" type="text" value="" name="text" placeholder="个性签名"/>
+    <div class="error-msg"></div>
+
+    <span>&nbsp;</span>
+    <input type="submit" class="button" value="提交"/>
+</form>
+
+</body>
+</html>
