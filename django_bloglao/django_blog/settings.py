@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
-    'blogs.apps.BlogsConfig'
+    'blogs.apps.BlogsConfig',
+    'pure_pagination',
 ]
 AUTH_USER_MODEL = 'users.BlogUser'
 MIDDLEWARE = [

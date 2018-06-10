@@ -83,5 +83,3 @@ class FriendlyLink(models.Model):
     class Meta:
         verbose_name = '友情链接'
         verbose_name_plural = verbose_name
-
-
