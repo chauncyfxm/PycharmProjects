@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>详情页</title>
+</head>
+<body>
+<h1>{{ book.btitle }}</h1>
+<ul>
+    {% for hero in book.heroinfo_set.all %}
+        {{ hero.hname }}拥有的技能是{{ hero.hcontent }}
+    {% endfor %}
+</ul>
+
+</body>
+</html>

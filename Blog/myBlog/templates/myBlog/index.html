@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static from staticfiles %}
+    <script src="{% static 'myBlog/jquery.js' %}"></script>
+    <script type="text/javascript">
+        dict = {'a':'b'};
+        $.get('{% url "blog:ajax" %}',dict,function(data){
+            if(data['v3'] != null){
+                $('.h2').html('你好：'+data['v3']+'<a href="{%url 'blog:logout'%}" class="display">退出</a>');
+                $('.h3').html(data['v3']+'：首页');
+                $('.name').html(data['v3']+'：写的博客');
+                $('.edit').html('<a href = "{% url "blog:editpage" %}" class="display">编辑博客</a>')
+            }else{
+                $('.login').html('<a href="{%url 'blog:login'%}">登录</a> <a href="{%url 'blog:record'%}">注册</a>')
+            }
+
+        });
+
+        {#自己的博客部分#}
+        dict_myblog = {'a':'a'};
+        $.get('{% url "blog:myblog" %}',dict_myblog,function(data){
+            if(data['v3'] != ''){
+                for (var i = 0; i < data['v3'].length; i++){
+                    {#var href = '';#}
+                    {#href = href +'<li>'+'<a'+'href = "/datail/'+data["v3"][i][0]+'"'+'>'+data["v3"][i][1]+'</a>'+'</li>';#}
+
+                    var href;
+                    var href1;
+                    var id;
+                    href = {% url 'blog:datail' i %};
+
+                    href1 = href1 + ('<li>'+'<a href="'+href+data["v3"][i][0]+'">'+data['v3'][i][1]+'</a>'+'</li>');
+                    {#href1 = href1 +'<a href="'+href+data["v3"][i][0]+'">'+i+'</a>';#}
+
+
+
+
+
+                }
+                $('.myblog').html(href1);
+            }else{
+                $('.myblog').html("<h2>登录可以看到自己写的博客</h2>");
+            }
+
+        })
+
+    </script>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body>
+
+
+
+<h1 class = 'h3'>匿名用户，请登录</h1>
+<p class="display h2"> </p>
+<p class = 'edit'></p>
+<p class="login"></p>
+<br>
+<br>
+<hr>
+<h2>最新动态</h2>
+<ul>
+
+    {% for foo in list %}
+        <li><a href = "{% url 'blog:datail' foo.id %}">{{ foo.btitle }}</a></li>
+    {% endfor %}
+
+</ul>
+
+
+<hr>
+{#自己的博客#}
+<h3><span class="name"></span></h3>
+
+<ul class="myblog">
+</ul>
+
+<hr>
+
+
+
+<img src="/static/myBlog/a_01.jpeg" width = '200px'>
+
+{% load static from staticfiles %}
+<img src="{% static "myBlog/a_02.jpeg" %}" width="200px">
+
+</body>
+</html>
